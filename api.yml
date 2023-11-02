@@ -1,0 +1,71 @@
+openapi: '3.0.3'
+info:
+  title: 'This is little api for prog3-seance1 version'
+  version: '1.0.0'
+  contact:
+    email: hei.ricka.3@gmail.com
+servers:
+  - url: https://STD22052.com
+  - url: https://prog3-seance3.com
+paths:
+  /books:
+    get:
+      summary: 'Get all books'
+      description: 'Return all books order by books name'
+      operationId: 'getBooks'
+      parameters:
+        - in: query
+          name: books_id
+          description: get book by the given id 
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: return all books 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    put:
+      summary: create or update of a list of books
+      operationId: updateBooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateBook'
+      responses:
+        '200':
+          description: 'Books created'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+components:
+  schemas:
+    CreateBook:
+      type: object
+      properties:
+        bookName:
+          type: string
+        Topic: 
+          $ref: '#/components/schemas/Topic'
+    Book: 
+      allOf: 
+        - type: object
+          properties:
+            id:
+              type: string
+        - $ref: '#/components/schemas/CreateBook'
+    Topic: 
+      type: string
+      enum:
+        - COMIC
+        - ROMANCE 
