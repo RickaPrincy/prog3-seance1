@@ -11,7 +11,7 @@ paths:
   /books:
     get:
       tags:
-        - "Books"
+        - Books
       summary: 'Get all books'
       description: 'Return all books order by books name'
       operationId: 'getBooks'
@@ -33,7 +33,7 @@ paths:
                   $ref: '#/components/schemas/Book'
     put:
       tags:
-        - "Books"
+        - Books
       summary: Create or Update of a list of books
       operationId: updateBooks
       requestBody:
