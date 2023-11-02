@@ -1,6 +1,6 @@
 openapi: '3.0.3'
 info:
-  title: 'This is little api for prog3-seance1 version'
+  title: 'Prog3-seance1 for Openapi practices'
   version: '1.0.0'
   contact:
     email: hei.ricka.3@gmail.com
@@ -10,6 +10,8 @@ servers:
 paths:
   /books:
     get:
+      tags:
+        - "Books"
       summary: 'Get all books'
       description: 'Return all books order by books name'
       operationId: 'getBooks'
@@ -30,7 +32,9 @@ paths:
                 items:
                   $ref: '#/components/schemas/Book'
     put:
-      summary: create or update of a list of books
+      tags:
+        - "Books"
+      summary: Create or Update of a list of books
       operationId: updateBooks
       requestBody:
         content:
